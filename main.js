@@ -106,6 +106,52 @@ var songs = [{
     }
 ]
 
+
+//
+
+function updateTimer(){
+var song = document.querySelector('audio');
+var ct =song.currentTime;
+var td =song.duration;
+var percentage = (ct/td)*100;
+$(".progress-filled").css('width',percentage+"%");
+
+
+
+}
+
+
+$(".player-progress").click(function(event) {
+    var $this = $(this);
+
+    // to get part of width of progress bar clicked
+    var widthclicked = event.pageX - $this.offset().left;
+    var totalWidth = $this.width(); // can also be cached somewhere in the app if it doesn't change
+
+    // do calculation of the seconds clicked
+    var calc = (widthclicked / totalWidth) * 100 ; // get the percent of bar clicked and multiply in by the duration
+
+
+var song = document.querySelector('audio');
+song.currentTime = (song.duration*calc)/100;
+updateTimer();
+
+
+
+});
+
+
+
+
+
+
+
+///////////
+
+
+
+
+
 function changeCurrentSongDetails(songObj) //function creat kiya ek argument pass kiya hai song object
 {
     $('.current-song-image').attr('src', 'img/' + songObj.image);
@@ -153,6 +199,11 @@ window.onload = function() {
     setInterval(function() {
         updateCurrentTime();
     }, 1000);
+
+    setInterval(function() {
+        updateTimer();
+    }, 1000);
+
 
 
     $("#songs").DataTable({

@@ -207,3 +207,9 @@ table.dataTable tbody tr {
     margin-bottom: 1rem;
     font-size: 16px;
 }
+#fill{
+
+width: 30%;
+background: red;
+
+}
