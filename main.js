@@ -2,6 +2,7 @@
 
 var Playingnumber = 0  ;
 var shuffle=0;
+var equal = 0;
 
 
 
@@ -388,6 +389,42 @@ Playingnumber=0;
 
 
 })
+
+
+$(".fa-bar-chart").click(function(){
+
+$(this).toggleClass("active");
+if(equal==0)
+{
+
+equal=1;
+
+$("svg").css("display","inline-block");
+$(".content").css("display","none");
+$(".contain").css("display","inline-block");
+$(".contain").css("background","black");
+
+
+}
+else{
+equal=0;
+$("svg").css("display","none");
+$(".content").css("display","inline-block");
+$(".contain").css("display","none");
+
+
+
+
+}
+
+
+
+
+
+
+
+})
+
 
 //   addSongNameClickEvent(fileNames[0],1);
 // addSongNameClickEvent(fileNames[1],2);

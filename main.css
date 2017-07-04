@@ -219,3 +219,18 @@ background: red;
 color: grey;
 
 }
+svg{
+position: absolute;
+top: 249px;
+left: 100px;
+display: none;
+}
+.contain{
+
+height: 499px;
+width: 100%;
+display: none;
+
+
+
+}
