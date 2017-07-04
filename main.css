@@ -77,6 +77,7 @@ h1 {
 
 .clickable {
     cursor: pointer;
+    margin-left: 20px;
 }
 
 .error {
@@ -211,5 +212,10 @@ table.dataTable tbody tr {
 
 width: 30%;
 background: red;
+
+}
+.active{
+
+color: grey;
 
 }
