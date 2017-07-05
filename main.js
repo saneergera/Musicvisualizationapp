@@ -3,7 +3,7 @@
 var Playingnumber = 0  ;
 var shuffle=0;
 var equal = 0;
-
+var loop = 0;
 
 
 
@@ -283,15 +283,15 @@ changeSong();
 
 })
 
-function shufflee(a) {
-    var j, x, i;
-    for (i = a.length; i; i--) {
-        j = Math.floor(Math.random() * i);
-        x = a[i - 1];
-        a[i - 1] = a[j];
-        a[j] = x;
-    }
-}
+// function shufflee(a) {
+//     var j, x, i;
+//     for (i = a.length; i; i--) {
+//         j = Math.floor(Math.random() * i);
+//         x = a[i - 1];
+//         a[i - 1] = a[j];
+//         a[j] = x;
+//     }
+// }
 
 
 
@@ -299,90 +299,95 @@ $(".fa-random").click(function(){
 
 
 $(this).toggleClass("active");
+if(shuffle==0){
 
-
-if(shuffle==0)
-{
-shuffle = 1;
-shufflee(songs);
-changeCurrentSongDetails(songs[0]);
-song =document.querySelector("audio");
-song.src = songs[0].fileName;
-toggleSong();
-Playingnumber=0;
-
-    for (var i = 0; i < songs.length; i++) //Var i zero se 3 tak chalana hai
-
-    {
-        var obj = songs[i]; //Diary ke andar se page utha ke humne obj variable mein store kar diya
-        var name = '#song' + (i + 1);
-        var song = $(name);
-        song.find('.song-name').text(obj.name); //("song1 .songname")
-        song.find('.song-artist').text(obj.artist);
-        song.find('.song-album').text(obj.album);
-        song.find('.song-length').text(obj.duration);
-        addSongNameClickEvent(obj, i + 1);
-    }
+shuffle=1;
 }
-
 else {
-  shuffle = 0;
-
-   songs = [{
-          'name': 'Badri Ki Dulhania (Title Track)',
-          'artist': 'Neha Kakkar, Monali Thakur, Ikka Singh, Dev Negi',
-          'album': 'Badrinath ki Dulhania',
-          'duration': '2:56',
-          'fileName': 'song1.mp3',
-          'image': 'song1.jpg'
-      },
-      {
-          'name': 'Humma Song',
-          'artist': 'Badshah, Jubin Nautiyal, Shashaa Tirupati',
-          'album': 'Ok Jaanu',
-          'duration': '3:15',
-          'fileName': 'song2.mp3',
-          'image': 'song2.jpg'
-      },
-      {
-          'name': 'Nashe Si Chadh Gayi',
-          'artist': 'Arijit Singh',
-          'album': 'Befikre',
-          'duration': '2:34',
-          'fileName': 'song3.mp3',
-          'image': 'song3.jpg'
-      },
-      {
-          'name': 'The Breakup Song',
-          'artist': 'Nakash Aziz, Arijit Singh, Badshah, Jonita Gandhi',
-          'album': 'Ae Dil Hai Mushkil',
-          'duration': '2:29',
-          'fileName': 'song4.mp3',
-          'image': 'song4.jpg'
-      }
-  ]
-
-  changeCurrentSongDetails(songs[0]);
-  song =document.querySelector("audio");
-  song.src = songs[0].fileName;
-toggleSong();
-Playingnumber=0;
-  for (var i = 0; i < songs.length; i++) //Var i zero se 3 tak chalana hai
-
-  {
-      var obj = songs[i]; //Diary ke andar se page utha ke humne obj variable mein store kar diya
-      var name = '#song' + (i + 1);
-      var song = $(name);
-      song.find('.song-name').text(obj.name); //("song1 .songname")
-      song.find('.song-artist').text(obj.artist);
-      song.find('.song-album').text(obj.album);
-      song.find('.song-length').text(obj.duration);
-      addSongNameClickEvent(obj, i + 1);
-  }
-
-
+  shuffle=0;
 }
+// if(shuffle==0)
+// {
+// shuffle = 1;
+// shufflee(songs);
+// changeCurrentSongDetails(songs[0]);
+// song =document.querySelector("audio");
+// song.src = songs[0].fileName;
+// toggleSong();
+// Playingnumber=0;
+//
+//     for (var i = 0; i < songs.length; i++) //Var i zero se 3 tak chalana hai
+//
+//     {
+//         var obj = songs[i]; //Diary ke andar se page utha ke humne obj variable mein store kar diya
+//         var name = '#song' + (i + 1);
+//         var song = $(name);
+//         song.find('.song-name').text(obj.name); //("song1 .songname")
+//         song.find('.song-artist').text(obj.artist);
+//         song.find('.song-album').text(obj.album);
+//         song.find('.song-length').text(obj.duration);
+//         addSongNameClickEvent(obj, i + 1);
+//     }
+// }
 
+// else {
+//   shuffle = 0;
+//
+//    songs = [{
+//           'name': 'Badri Ki Dulhania (Title Track)',
+//           'artist': 'Neha Kakkar, Monali Thakur, Ikka Singh, Dev Negi',
+//           'album': 'Badrinath ki Dulhania',
+//           'duration': '2:56',
+//           'fileName': 'song1.mp3',
+//           'image': 'song1.jpg'
+//       },
+//       {
+//           'name': 'Humma Song',
+//           'artist': 'Badshah, Jubin Nautiyal, Shashaa Tirupati',
+//           'album': 'Ok Jaanu',
+//           'duration': '3:15',
+//           'fileName': 'song2.mp3',
+//           'image': 'song2.jpg'
+//       },
+//       {
+//           'name': 'Nashe Si Chadh Gayi',
+//           'artist': 'Arijit Singh',
+//           'album': 'Befikre',
+//           'duration': '2:34',
+//           'fileName': 'song3.mp3',
+//           'image': 'song3.jpg'
+//       },
+//       {
+//           'name': 'The Breakup Song',
+//           'artist': 'Nakash Aziz, Arijit Singh, Badshah, Jonita Gandhi',
+//           'album': 'Ae Dil Hai Mushkil',
+//           'duration': '2:29',
+//           'fileName': 'song4.mp3',
+//           'image': 'song4.jpg'
+//       }
+//   ]
+//
+//   changeCurrentSongDetails(songs[0]);
+//   song =document.querySelector("audio");
+//   song.src = songs[0].fileName;
+// toggleSong();
+// Playingnumber=0;
+//   for (var i = 0; i < songs.length; i++) //Var i zero se 3 tak chalana hai
+//
+//   {
+//       var obj = songs[i]; //Diary ke andar se page utha ke humne obj variable mein store kar diya
+//       var name = '#song' + (i + 1);
+//       var song = $(name);
+//       song.find('.song-name').text(obj.name); //("song1 .songname")
+//       song.find('.song-artist').text(obj.artist);
+//       song.find('.song-album').text(obj.album);
+//       song.find('.song-length').text(obj.duration);
+//       addSongNameClickEvent(obj, i + 1);
+//   }
+//
+//
+// }
+//
 
 
 
@@ -423,6 +428,63 @@ $(".contain").css("display","none");
 
 
 
+})
+
+$(".fa-repeat").click(function(){
+$(this).toggleClass("active");
+if(loop==0){
+
+loop=1;
+
+}
+else{
+
+loop=0;
+
+}
+
+
+})
+
+function randomExcluded(min, max, excluded) {
+    var n = Math.floor(Math.random() * (max-min) + min);
+    if (n >= excluded) n++;
+    return n;
+}
+
+
+
+$('audio').on('ended',function() {
+    var audio = document.querySelector('audio');
+    if (shuffle == 1) {
+            var nextSongNumber = randomExcluded(0,3,Playingnumber); // Calling our function from Stackoverflow
+            console.log(nextSongNumber);
+            var nextSongObj = songs[nextSongNumber];
+            audio.src = nextSongObj.fileName;
+            toggleSong();
+            changeCurrentSongDetails(nextSongObj);
+            Playingnumber = nextSongNumber;
+
+        }
+    else if(Playingnumber < 3) {
+
+        var nextSongObj = songs[Playingnumber+1];
+        audio.src = nextSongObj.fileName; // Change Soure
+        toggleSong(); // Play Next Song
+        changeCurrentSongDetails(nextSongObj); // Update Image
+        Playingnumber ++;// Change State
+    }
+    else if(loop == 1) {
+         var nextSongObj = songs[0];
+         audio.src = nextSongObj.fileName;
+         toggleSong();
+         changeCurrentSongDetails(nextSongObj);
+         currentSongNumber =  1;
+     }
+     else {
+         $('.play-icon').removeClass('fa-pause').addClass('fa-play');
+         audio.currentTime = 0;
+     }
 })
 
 
