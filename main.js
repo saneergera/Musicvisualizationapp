@@ -232,27 +232,45 @@ window.onload = function() {
     });
 }
 
+function randomExcluded(min, max, excluded) {
+    var n = Math.floor(Math.random() * (max-min) + min);
+    if (n >= excluded) n++;
+    return n;
+}
+
 
 $(".fa-step-forward").click(function(){
 
-if(Playingnumber == songs.length-1){
-console.log("one");
-Playingnumber = 0;
-changeSong();
+if(shuffle==1)
+{
+      var audio = document.querySelector('audio');
+      var nextSongNumber = randomExcluded(0,3,Playingnumber); // Calling our function from Stackoverflow
 
+      var nextSongObj = songs[nextSongNumber];
+      audio.src = nextSongObj.fileName;
+      toggleSong();
+      changeCurrentSongDetails(nextSongObj);
+      Playingnumber = nextSongNumber;
 
 
 }
+
 
 else {
-console.log("two");
-console.log(Playingnumber);
-  Playingnumber++;
-changeSong();
+
+          if(Playingnumber == songs.length-1){
+          Playingnumber = 0;
+          changeSong();
+          }
+
+          else {
+          console.log("two");
+          console.log(Playingnumber);
+            Playingnumber++;
+          changeSong();
+          }
+
 }
-
-
-
 
 })
 
@@ -298,7 +316,7 @@ changeSong();
 $(".fa-random").click(function(){
 
 
-$(this).toggleClass("active");
+$(".fa-random").toggleClass("active");
 if(shuffle==0){
 
 shuffle=1;
@@ -431,7 +449,7 @@ $(".contain").css("display","none");
 })
 
 $(".fa-repeat").click(function(){
-$(this).toggleClass("active");
+$(".fa-repeat").toggleClass("active");
 if(loop==0){
 
 loop=1;
@@ -458,6 +476,7 @@ $('audio').on('ended',function() {
     var audio = document.querySelector('audio');
     if (shuffle == 1) {
             var nextSongNumber = randomExcluded(0,3,Playingnumber); // Calling our function from Stackoverflow
+console.log(nextSongNumber);
             console.log(nextSongNumber);
             var nextSongObj = songs[nextSongNumber];
             audio.src = nextSongObj.fileName;
@@ -493,3 +512,17 @@ $('audio').on('ended',function() {
 // addSongNameClickEvent(fileNames[1],2);
 // addSongNameClickEvent(fileNames[2],3);
 // addSongNameClickEvent(fileNames[3],4);
+
+$(".fa-microphone").hover(function(){
+
+$("ol").css("display","inline-block")
+
+
+})
+
+$(".fa-microphone").mouseout(function(){
+
+$("ol").css("display","none")
+
+
+})
