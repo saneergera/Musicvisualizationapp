@@ -467,7 +467,7 @@ $('audio').on('ended',function() {
 
         }
     else if(Playingnumber < 3) {
-
+  console.log("hello2");
         var nextSongObj = songs[Playingnumber+1];
         audio.src = nextSongObj.fileName; // Change Soure
         toggleSong(); // Play Next Song
@@ -475,11 +475,12 @@ $('audio').on('ended',function() {
         Playingnumber ++;// Change State
     }
     else if(loop == 1) {
+  console.log("hello3");
          var nextSongObj = songs[0];
          audio.src = nextSongObj.fileName;
          toggleSong();
          changeCurrentSongDetails(nextSongObj);
-         currentSongNumber =  1;
+         Playingnumber =  1;
      }
      else {
          $('.play-icon').removeClass('fa-pause').addClass('fa-play');
